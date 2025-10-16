@@ -12,12 +12,8 @@ redisClient.on('error', (err) => {
 
 await redisClient.connect();
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
 
-
-app.get('/countries', async (req, res) => {
+app.get('/', async (req, res) => {
   const cacheKey = 'countries';
   const cachedData = await redisClient.get(cacheKey);
 
